@@ -1,0 +1,103 @@
+@import "tailwindcss" important;
+
+@source "../../pages";
+
+/* VitePress signals dark mode with a `.dark` class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* TRON red, darkened for legibility on white and lightened for dark mode. */
+:root {
+  --vp-c-brand-1: #d40308;
+  --vp-c-brand-2: #b00206;
+  --vp-c-brand-3: #d40308;
+  --vp-c-brand-soft: rgba(212, 3, 8, 0.14);
+}
+.dark {
+  --vp-c-brand-1: #ff5a5f;
+  --vp-c-brand-2: #ff8085;
+  --vp-c-brand-3: #ff5a5f;
+  --vp-c-brand-soft: rgba(255, 90, 95, 0.16);
+}
+
+/* ---- Landing page (pageClass: landing) ---------------------------------- */
+
+/* The hero shows a large logo of its own; hide the navbar copy there. */
+.landing .VPNavBarTitle .logo {
+  display: none;
+}
+
+.landing .vp-doc h2,
+.landing .landing-article h2 {
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Hero buttons (replaces Vocs' HomePage.Button). */
+.vp-doc a.landing-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition: background-color 0.25s;
+}
+.vp-doc a.landing-btn:hover {
+  background-color: var(--vp-c-gray-2);
+}
+.vp-doc a.landing-btn--accent {
+  background-color: var(--vp-c-brand-3);
+  color: #fff;
+}
+.dark .vp-doc a.landing-btn--accent {
+  color: #000;
+}
+.vp-doc a.landing-btn--accent:hover {
+  background-color: var(--vp-c-brand-2);
+}
+
+/* Stretch the install code-group to fill the hero column. */
+#home-install {
+  display: flex;
+  flex-direction: column;
+}
+#home-install .vp-code-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+#home-install .vp-code-group .blocks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#home-install .vp-code-group .blocks > div {
+  flex: 1;
+  flex-direction: column;
+  margin: 0;
+}
+#home-install .vp-code-group .blocks > div.active {
+  display: flex;
+}
+#home-install pre {
+  flex: 1;
+  font-size: 18px;
+}
+
+/* ---- Twoslash ----------------------------------------------------------- */
+
+/* Collapse the margin gap between consecutive twoslash custom tag lines
+   (@log/@error/@warn/@annotate) so their backgrounds form a continuous band. */
+.twoslash-tag-line:has(+ .twoslash-tag-line) {
+  margin-bottom: 0;
+}
+.twoslash-tag-line + .twoslash-tag-line {
+  margin-top: 0;
+}

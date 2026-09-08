@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    // Type checking
+    "strict": true,
+    "noEmit": true,
+    "exactOptionalPropertyTypes": true,
+    // Off on purpose: doc snippets bind results to names they never read.
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+
+    // Language and environment
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+
+    // Interop
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", ".vitepress/dist", ".vitepress/cache"]
+}

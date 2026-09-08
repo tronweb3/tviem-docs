@@ -1,0 +1,43 @@
+# dependencies & build output
+node_modules
+.vitepress/dist
+.vitepress/cache
+*.tsbuildinfo
+
+# env files
+.env
+.env.*
+.envrc
+
+# credentials & key material
+# this repo documents private keys and mnemonics — keep real ones out by default
+.npmrc
+.netrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+id_rsa*
+id_ed25519*
+keystore.json
+wallet.json
+secrets.json
+credentials.json
+mnemonic.txt
+seed.txt
+UTC--*
+
+# editors & OS
+.DS_Store
+.idea
+.vscode
+*.swp
+
+# local overrides & logs
+*.local
+*.log
+*.bak
+*.orig

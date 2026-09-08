@@ -1,0 +1,25 @@
+{
+  "name": "tviem-docs",
+  "private": true,
+  "type": "module",
+  "description": "Documentation site for @tronweb3/tviem",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 vitepress build",
+    "preview": "vitepress preview",
+    "check:types": "tsc --noEmit",
+    "check:snippets": "node scripts/checkSnippets.mjs"
+  },
+  "devDependencies": {
+    "@shikijs/vitepress-twoslash": "4.4.3",
+    "@tailwindcss/vite": "4.1.16",
+    "@tronweb3/tviem": "link:../tron-viem",
+    "@types/node": "24.13.2",
+    "tailwindcss": "4.1.16",
+    "typescript": "5.9.3",
+    "vitepress": "1.6.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

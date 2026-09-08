@@ -1,0 +1,11 @@
+# Single-package repo: only the root is a workspace member. This file also
+# holds pnpm settings, which pnpm >= 11 no longer reads from package.json.
+packages:
+  - '.'
+
+# esbuild's postinstall links the platform binary, so it has to run. The other
+# two are transitive and their scripts are not needed to build the site.
+allowBuilds:
+  esbuild: true
+  es5-ext: false
+  vue-demi: false

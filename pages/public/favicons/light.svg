@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-label="tviem">
+  <title>tviem</title>
+  <rect width="64" height="64" rx="14" fill="#ffffff"/>
+  <path d="M12 15 L52 24 L32 52 Z" fill="none" stroke="#d40308" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M12 15 L32 52" stroke="#d40308" stroke-width="2.6" stroke-linejoin="round" opacity="0.55"/>
+  <path d="M52 24 L21 28" stroke="#d40308" stroke-width="2.6" stroke-linejoin="round" opacity="0.55"/>
+</svg>
