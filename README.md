@@ -5,8 +5,35 @@ Documentation site for [`@tronweb3/tviem`](https://github.com/tronweb3/tviem), b
 
 ## Local development
 
-The site type-checks every `twoslash` code block against tviem's real
-declaration files, so it needs tviem's build output to exist.
+```bash
+pnpm install
+pnpm dev
+```
+
+Open http://localhost:5173.
+
+Read the next section first — tviem is not on npm yet, so `pnpm install`
+does not work out of the box.
+
+## The tviem dependency
+
+`package.json` depends on the published package:
+
+```json
+"@tronweb3/tviem": "^1.0.0-beta.1"
+```
+
+tviem has not been released yet, so that range resolves to nothing and
+`pnpm install` fails with a 404. Until the first release lands, point the
+dependency at a local tviem checkout instead:
+
+```json
+"@tronweb3/tviem": "link:../tron-viem"
+```
+
+This expects `tron-viem` to sit next to this repo. The site type-checks every
+`twoslash` code block against tviem's real declaration files, so a local
+checkout also has to be built before the docs will run:
 
 ```bash
 # 1. Build tviem's types (once, and after any source change)
@@ -16,25 +43,8 @@ cd ../tron-viem && pnpm build:types
 cd ../tviem-docs && pnpm install && pnpm dev
 ```
 
-Open http://localhost:5173.
-
-## The tviem dependency
-
-`package.json` currently links tviem from the local filesystem:
-
-```json
-"@tronweb3/tviem": "link:../tron-viem"
-```
-
-This expects `tron-viem` to sit next to this repo. Once tviem is published to
-npm, replace that line with the published range and re-run `pnpm install`:
-
-```json
-"@tronweb3/tviem": "^1.0.0-beta.1"
-```
-
-Nothing else in the site refers to the local path, so that one line is the
-whole migration.
+Nothing else in the site refers to the package by path, so that one line is
+the whole switch in either direction.
 
 ## Checking the code samples
 
