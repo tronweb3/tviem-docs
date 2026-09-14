@@ -172,6 +172,7 @@ await contract.transfer(to, value).send({ feeLimit: 100_000_000 })
 const balance = await publicClient.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],
@@ -204,9 +205,10 @@ const contract = getContract({
   client: publicClient,
 })
 
-const balance = await contract.read.balanceOf([
-  'TSenderAccountDemoxxxxxxxxxxxxxxxx',
-])
+const balance = await contract.read.balanceOf(
+  ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],
+  { account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx' },
+)
 ```
 
 ## Addresses

@@ -145,6 +145,7 @@ TRC-20 is ABI-compatible with ERC-20, so a standard ABI works. Declare it with
 const balance = await publicClient.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],

@@ -94,11 +94,17 @@ const address = 'TTokenContractDemoxxxxxxxxxxxxxxxx'
 const [balance, decimals] = await Promise.all([
   publicClient.readContract({
     address,
+    account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
     abi: trc20Abi,
     functionName: 'balanceOf',
     args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],
   }),
-  publicClient.readContract({ address, abi: trc20Abi, functionName: 'decimals' }),
+  publicClient.readContract({
+    address,
+    account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
+    abi: trc20Abi,
+    functionName: 'decimals',
+  }),
 ])
 
 const display = formatUnits(balance, Number(decimals)) // [!code focus]

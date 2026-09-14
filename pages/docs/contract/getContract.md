@@ -22,7 +22,7 @@ const contract = getContract({
   client: publicClient,
 })
 
-const symbol = await contract.read.symbol()
+const symbol = await contract.read.symbol({ account })
 //    ^?
 ```
 

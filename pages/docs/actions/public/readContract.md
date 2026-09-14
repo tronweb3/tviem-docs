@@ -17,6 +17,7 @@ fee is charged.
 const balance = await publicClient.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],
@@ -24,7 +25,13 @@ const balance = await publicClient.readContract({
 ```
 
 The return type is inferred from the ABI — `balanceOf` returns `uint256`, so you
-get a `bigint`. A function with no arguments omits `args` entirely:
+get a `bigint`.
+
+Note the `account`: it is the caller the node executes the read as, and tviem
+never defaults it. A Public Client has no account to fall back on, so every read
+through one must pass it — see [`account`](#account) below.
+
+A function with no arguments omits `args` entirely:
 
 ```ts twoslash
 <!--@include: ../../../../snippets/publicClient.ts-->
@@ -33,6 +40,7 @@ get a `bigint`. A function with no arguments omits `args` entirely:
 const symbol = await publicClient.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'symbol',
 })
@@ -50,6 +58,21 @@ value; multiple outputs decode to a tuple.
 - **Type:** `` `T${string}` ``
 
 The contract's Base58Check address.
+
+### account
+
+- **Type:** `TronAccount | AddressInput`
+
+The caller — the address the node executes the call as (`owner_address`).
+
+tviem never defaults this: a `view` function's result can depend on who asks
+(`msg.sender`), so guessing a caller would silently return the wrong answer.
+It is resolved from the per-call `account`, falling back to the Client's hoisted
+account; with neither, the call throws `AccountNotFoundError`.
+
+A [Public Client](/docs/clients/public) cannot hoist an account —
+`createPublicClient` does not accept one — so on a Public Client `account` is
+required on every call.
 
 ### abi
 
@@ -72,6 +95,7 @@ so a typo or a `nonpayable` function is a compile error:
 // ---cut---
 const result = await publicClient.readContract({
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'transfer',
 })
@@ -105,6 +129,7 @@ A reverting `view` call throws. Wrap it if a revert is an expected outcome:
 try {
   await publicClient.readContract({
     address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+    account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
     abi: trc20Abi,
     functionName: 'balanceOf',
     args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],

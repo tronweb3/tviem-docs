@@ -85,12 +85,23 @@ const [trx, tokenBalance, decimals, symbol] = await Promise.all([
   publicClient.getBalance({ address: user }),
   publicClient.readContract({
     address: usdt,
+    account: user,
     abi: trc20Abi,
     functionName: 'balanceOf',
     args: [user],
   }),
-  publicClient.readContract({ address: usdt, abi: trc20Abi, functionName: 'decimals' }),
-  publicClient.readContract({ address: usdt, abi: trc20Abi, functionName: 'symbol' }),
+  publicClient.readContract({
+    address: usdt,
+    account: user,
+    abi: trc20Abi,
+    functionName: 'decimals',
+  }),
+  publicClient.readContract({
+    address: usdt,
+    account: user,
+    abi: trc20Abi,
+    functionName: 'symbol',
+  }),
 ])
 
 const display = {
@@ -113,14 +124,16 @@ If you touch the same contract repeatedly,
 // ---cut---
 import { getContract } from '@tronweb3/tviem'
 
+const user = 'TSenderAccountDemoxxxxxxxxxxxxxxxx'
+
 const usdt = getContract({
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   client: publicClient,
 })
 
-const symbol = await usdt.read.symbol()
-const balance = await usdt.read.balanceOf(['TSenderAccountDemoxxxxxxxxxxxxxxxx'])
+const symbol = await usdt.read.symbol({ account: user })
+const balance = await usdt.read.balanceOf([user], { account: user })
 ```
 
 ## Sending a transaction

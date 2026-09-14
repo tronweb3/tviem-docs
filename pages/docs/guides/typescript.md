@@ -46,6 +46,7 @@ const abi = [
 
 const balance = await publicClient.readContract({
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],
@@ -61,6 +62,7 @@ With `as const`, the literal types survive and everything is inferred:
 const balance = await publicClient.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],
@@ -88,6 +90,7 @@ From one `as const` ABI:
 // `transfer` is nonpayable, so it is not offered to readContract.
 await publicClient.readContract({
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'transfer',
 })
@@ -138,6 +141,7 @@ departure from abitype's default, which maps `uint8` through `uint48` to
 const decimals = await publicClient.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'decimals',
 })
@@ -154,6 +158,7 @@ import { formatUnits } from '@tronweb3/tviem'
 declare const balance: bigint
 const decimals = await publicClient.readContract({
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'decimals',
 })
@@ -210,6 +215,7 @@ const client = createPublicClient({ chain: mainnet, transport: http() })
 const balance = await client.readContract({
 //    ^?
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],

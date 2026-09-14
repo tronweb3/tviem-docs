@@ -70,6 +70,7 @@ import { BaseError } from '@tronweb3/tviem'
 try {
   await publicClient.readContract({
     address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+    account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
     abi: trc20Abi,
     functionName: 'balanceOf',
     args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'],

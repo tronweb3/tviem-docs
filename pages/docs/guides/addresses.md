@@ -54,6 +54,7 @@ includes contract calls — pass Base58Check for a Solidity `address` argument a
 // ---cut---
 const balance = await publicClient.readContract({
   address: 'TTokenContractDemoxxxxxxxxxxxxxxxx',
+  account: 'TSenderAccountDemoxxxxxxxxxxxxxxxx',
   abi: trc20Abi,
   functionName: 'balanceOf',
   args: ['TSenderAccountDemoxxxxxxxxxxxxxxxx'], // [!code focus]

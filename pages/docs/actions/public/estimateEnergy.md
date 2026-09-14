@@ -95,11 +95,15 @@ Takes the same call shape as
 [`writeContract`](/docs/actions/wallet/writeContract) — `address`, `abi`,
 `functionName`, `args` — plus:
 
-### account (optional)
+### account
 
 - **Type:** `TronAccount | AccountKey`
 
-The caller. Energy cost depends on who calls — a first write to a storage slot
+The caller. Required unless the Client hoists an account — and a
+[Public Client](/docs/clients/public) cannot, so on one this is always required;
+without it the call throws `AccountNotFoundError`.
+
+Energy cost depends on who calls — a first write to a storage slot
 costs more than an update, and the caller's own state decides that. Passing a
 different account than the one that will send gives you an estimate for the
 wrong transaction.
