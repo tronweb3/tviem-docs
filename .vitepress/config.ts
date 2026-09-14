@@ -53,7 +53,7 @@ export default defineConfig({
   themeConfig: {
     logo: { light: '/logo-light.svg', dark: '/logo-dark.svg' },
     editLink: {
-      pattern: 'https://github.com/web3iocore/tviem-docs/edit/main/pages/:path',
+      pattern: 'https://github.com/tronweb3/tviem-docs/edit/main/pages/:path',
       text: 'Suggest changes to this page',
     },
     socialLinks: [
