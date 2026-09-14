@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "description": "Documentation site for @tronweb3/tviem",
+  "license": "MIT",
   "scripts": {
     "dev": "vitepress dev",
     "build": "NODE_OPTIONS=--max-old-space-size=8192 vitepress build",

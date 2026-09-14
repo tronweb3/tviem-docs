@@ -80,3 +80,7 @@ snippets/                shared twoslash fixtures
   config.ts              site config + sidebar
   theme/                 default theme + brand colors, landing styles
 ```
+
+## License
+
+[MIT](./LICENSE) — same as [tviem](https://github.com/tronweb3/tviem) itself.
