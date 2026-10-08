@@ -40,7 +40,7 @@ back, confirm with
 | [`signTypedData`](/docs/actions/wallet/signTypedData)                  | Signs TIP-712 typed data           |
 | [`multiSign`](/docs/actions/wallet/multiSign)                          | Co-signs under a permission        |
 | [`broadcastTransaction`](/docs/actions/wallet/broadcastTransaction)    | Broadcasts a signed transaction    |
-| `broadcastHex`                                                         | Broadcasts a hex-encoded transaction |
+| [`broadcastHex`](/docs/actions/wallet/broadcastTransaction#broadcasthex) | Broadcasts a hex-encoded transaction |
 
 ## Staking & resources
 

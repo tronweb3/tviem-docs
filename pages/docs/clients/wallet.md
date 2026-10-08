@@ -144,6 +144,6 @@ stops at the unsigned transaction — see
 | Transfer  | [`sendTrx`](/docs/actions/wallet/sendTrx), [`sendTrc10`](/docs/actions/wallet/sendTrc10)     |
 | Contract  | [`writeContract`](/docs/actions/wallet/writeContract), [`deployContract`](/docs/actions/wallet/deployContract) |
 | Signing   | [`signTransaction`](/docs/actions/wallet/signTransaction), [`signMessage`](/docs/actions/wallet/signMessage), [`signTypedData`](/docs/actions/wallet/signTypedData), [`multiSign`](/docs/actions/wallet/multiSign) |
-| Broadcast | [`broadcastTransaction`](/docs/actions/wallet/broadcastTransaction), `broadcastHex`          |
+| Broadcast | [`broadcastTransaction`](/docs/actions/wallet/broadcastTransaction), [`broadcastHex`](/docs/actions/wallet/broadcastTransaction#broadcasthex) |
 | Resources | [`freezeBalanceV2`](/docs/actions/wallet/freezeBalanceV2), [`delegateResource`](/docs/actions/wallet/delegateResource), and the rest of the staking family |
 | Governance | Proposals, witnesses, exchanges, TRC-10 assets, account permissions                        |

@@ -45,6 +45,21 @@ responses.
 
 Both are the same 32-byte hash, hex-encoded without a `0x` prefix.
 
+## Why does `broadcastTransaction` fail with `No contract!`?
+
+The transaction carries an integer the node's JSON parser cannot take — an
+`amount`, `call_value` or staked balance past `2^53 − 1` SUN (roughly 9 billion
+TRX), or a large TRC-10 amount. tviem keeps the value exact by rendering it as
+a decimal string, but java-tron reads `int64` fields as bare numbers only, so
+the node rejects the contract with `CONTRACT_VALIDATE_ERROR`.
+
+Broadcast the signed bytes instead of the JSON:
+[`broadcastHex`](/docs/actions/wallet/broadcastTransaction#very-large-integers)
+relays the transaction exactly as signed. The build-and-broadcast actions take
+the JSON path too, so split the flow — build, sign, `broadcastHex`.
+ABI-encoded arguments such as a `uint256` token amount are unaffected; they
+travel as hex in `data`.
+
 ## Why does my contract call return `unknown`?
 
 Almost always a missing `as const` on the ABI:

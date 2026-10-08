@@ -91,7 +91,7 @@ transaction executed. For the outcome, wait for the receipt with
 | Action                                                                  | Takes                      |
 | ------------------------------------------------------------------------ | -------------------------- |
 | [`broadcastTransaction`](/docs/actions/wallet/broadcastTransaction)      | A signed transaction       |
-| `broadcastHex`                                                           | A hex-encoded transaction  |
+| [`broadcastHex`](/docs/actions/wallet/broadcastTransaction#broadcasthex) | A hex-encoded transaction  |
 
 ### Resources
 
