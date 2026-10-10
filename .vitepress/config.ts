@@ -51,7 +51,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   themeConfig: {
-    logo: { light: '/logo-light.svg', dark: '/logo-dark.svg' },
     editLink: {
       pattern: 'https://github.com/tronweb3/tviem-docs/edit/main/pages/:path',
       text: 'Suggest changes to this page',

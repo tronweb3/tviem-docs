@@ -10,8 +10,7 @@ outline: false
 <div class="pt-[48px] max-sm:pt-0">
 <div class="max-sm:px-0 flex justify-between z-0 max-md:justify-center">
 <div class="space-y-8 max-w-[400px] flex flex-col items-start max-md:items-center">
-  <img class="h-[64px] max-sm:h-[54px] dark:hidden" src="/logo-light.svg" alt="tviem logo" />
-  <img class="h-[64px] max-sm:h-[54px] hidden dark:block" src="/logo-dark.svg" alt="tviem logo" />
+  <h1 class="font-wordmark font-bold text-[96px] max-sm:text-[80px] leading-none tracking-[-0.04em] text-black dark:text-white">tviem</h1>
   <div class="font-regular text-[21px] max-sm:text-[18px] text-[#919193] max-md:text-center">Build reliable apps &amp; libraries with <span class="text-black dark:text-white">lightweight</span>, <span class="text-black dark:text-white">composable</span>, and <span class="text-black dark:text-white">type-safe</span> modules that interface with TRON</div>
   <div class="flex justify-center space-x-2 flex-nowrap">
     <a class="landing-btn landing-btn--accent" href="/docs/getting-started">Get started</a>

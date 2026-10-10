@@ -73,7 +73,7 @@ The fast check is an approximation of Twoslash, not a replacement — run
 ```
 pages/
   index.md               landing page
-  public/                logo, favicons
+  public/                favicons, wordmark fallback font (Tinos, OFL)
   docs/
     introduction.md      why tviem
     installation.md
