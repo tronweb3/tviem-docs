@@ -1,5 +1,4 @@
 # Builds the site on every push to main and publishes it to GitHub Pages.
-# The repository's Pages source must be set to "GitHub Actions".
 name: Deploy docs
 
 on:
@@ -7,10 +6,8 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Each job declares only what it needs; nothing is granted workflow-wide.
 permissions: {}
 
-# One deployment at a time; let an in-flight one finish rather than cancel it.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -21,19 +18,22 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      # Third-party action, so it is pinned to a commit. The pnpm version
-      # itself comes from package.json#packageManager.
-      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+
+      # pnpm version comes from package.json#packageManager.
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: pnpm
+
       - run: pnpm install --frozen-lockfile
-      # Every `ts twoslash` block is type-checked during the build, so this is
-      # also the test suite. `build` already raises the heap limit it needs.
+
+      # Twoslash examples are type-checked during the build.
       - run: pnpm build
-      - uses: actions/upload-pages-artifact@v3
+
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: .vitepress/dist
 
@@ -48,4 +48,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
