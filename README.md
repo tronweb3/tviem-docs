@@ -12,9 +12,6 @@ pnpm install
 pnpm dev
 ```
 
-Open http://localhost:5173/tviem/ (the site lives under `/tviem/`, see
-[Deployment](#deployment)).
-
 ## The tviem dependency
 
 `package.json` depends on the published package:
@@ -91,19 +88,6 @@ snippets/                shared twoslash fixtures
 .github/workflows/
   deploy.yml             build + publish to GitHub Pages on push to main
 ```
-
-## Deployment
-
-Every push to `main` runs [`deploy.yml`](./.github/workflows/deploy.yml),
-which builds the site and publishes it to GitHub Pages (the repository's
-Pages source is set to "GitHub Actions").
-
-The public URL is https://walletadapter.org/tviem/, so `base` in
-`.vitepress/config.ts` is `/tviem/` and every asset and route is emitted under
-that prefix. GitHub Pages is only the origin: walletadapter.org's nginx proxies
-`/tviem/` to https://tronweb3.github.io/tviem-docs/ (this repository's Pages
-URL; no custom domain is configured on the GitHub side). Opening the origin
-URL directly will not render, because its assets resolve to `/tviem/`.
 
 ## License
 
