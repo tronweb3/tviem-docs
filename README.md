@@ -3,6 +3,8 @@
 Documentation site for [`@tronweb3/tviem`](https://github.com/tronweb3/tviem), built with
 [VitePress](https://vitepress.dev).
 
+The site is published at https://walletadapter.org/tviem/.
+
 ## Local development
 
 ```bash
@@ -10,10 +12,8 @@ pnpm install
 pnpm dev
 ```
 
-Open http://localhost:5173.
-
-Read the next section first — tviem is not on npm yet, so `pnpm install`
-does not work out of the box.
+Open http://localhost:5173/tviem/ (the site lives under `/tviem/`, see
+[Deployment](#deployment)).
 
 ## The tviem dependency
 
@@ -23,21 +23,20 @@ does not work out of the box.
 "@tronweb3/tviem": "^1.0.0-beta.1"
 ```
 
-tviem has not been released yet, so that range resolves to nothing and
-`pnpm install` fails with a 404. Until the first release lands, point the
-dependency at a local tviem checkout instead:
+To document changes that are not released yet, point the dependency at a
+local tviem checkout instead:
 
 ```json
-"@tronweb3/tviem": "link:../tron-viem"
+"@tronweb3/tviem": "link:../tviem"
 ```
 
-This expects `tron-viem` to sit next to this repo. The site type-checks every
-`twoslash` code block against tviem's real declaration files, so a local
+This expects the `tviem` repo to sit next to this one. The site type-checks
+every `twoslash` code block against tviem's real declaration files, so the
 checkout also has to be built before the docs will run:
 
 ```bash
 # 1. Build tviem's types (once, and after any source change)
-cd ../tron-viem && pnpm build:types
+cd ../tviem && pnpm build:types
 
 # 2. Run the docs
 cd ../tviem-docs && pnpm install && pnpm dev
@@ -89,7 +88,22 @@ snippets/                shared twoslash fixtures
 .vitepress/
   config.ts              site config + sidebar
   theme/                 default theme + brand colors, landing styles
+.github/workflows/
+  deploy.yml             build + publish to GitHub Pages on push to main
 ```
+
+## Deployment
+
+Every push to `main` runs [`deploy.yml`](./.github/workflows/deploy.yml),
+which builds the site and publishes it to GitHub Pages (the repository's
+Pages source is set to "GitHub Actions").
+
+The public URL is https://walletadapter.org/tviem/, so `base` in
+`.vitepress/config.ts` is `/tviem/` and every asset and route is emitted under
+that prefix. GitHub Pages is only the origin: walletadapter.org's nginx proxies
+`/tviem/` to https://tronweb3.github.io/tviem-docs/ (this repository's Pages
+URL; no custom domain is configured on the GitHub side). Opening the origin
+URL directly will not render, because its assets resolve to `/tviem/`.
 
 ## License
 

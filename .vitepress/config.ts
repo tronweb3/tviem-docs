@@ -3,21 +3,29 @@ import { createFileSystemTypesCache } from '@shikijs/vitepress-twoslash/cache-fs
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vitepress'
 
+// The public URL is https://walletadapter.org/tviem/. walletadapter.org's nginx
+// proxies that prefix to the GitHub Pages origin, tronweb3.github.io/tviem-docs/,
+// so the browser only ever sees /tviem/ and every route and asset lives there.
+const base = '/tviem/'
+
 export default defineConfig({
   title: 'tviem',
   titleTemplate: ':title · tviem',
   description:
     'Build reliable TRON apps & libraries with lightweight, composable, and type-safe modules from tviem.',
   srcDir: 'pages',
+  base,
   // Keep the extensionless /docs/* URLs the site has always had. Needs
   // rewrite support from the host (automatic on GitHub Pages / Netlify).
   cleanUrls: true,
   head: [
+    // `head` hrefs are emitted verbatim — VitePress does not prefix them with
+    // `base` — so the favicons carry it explicitly.
     [
       'link',
       {
         rel: 'icon',
-        href: '/favicons/light.svg',
+        href: `${base}favicons/light.svg`,
         media: '(prefers-color-scheme: light)',
       },
     ],
@@ -25,14 +33,14 @@ export default defineConfig({
       'link',
       {
         rel: 'icon',
-        href: '/favicons/dark.svg',
+        href: `${base}favicons/dark.svg`,
         media: '(prefers-color-scheme: dark)',
       },
     ],
   ],
-  ...(process.env.SITE_URL
-    ? { sitemap: { hostname: process.env.SITE_URL } }
-    : {}),
+  // The sitemap generator joins this with each page path and never looks at
+  // `base`, so the hostname has to carry it (trailing slash included).
+  sitemap: { hostname: `https://walletadapter.org${base}` },
   markdown: {
     codeTransformers: [
       {

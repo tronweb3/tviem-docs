@@ -6,6 +6,12 @@ pageClass: landing
 outline: false
 ---
 
+<script setup lang="ts">
+// Raw HTML hrefs are not rewritten with `base` (only Markdown links are),
+// so the landing page's own anchors go through `withBase`.
+import { withBase } from 'vitepress'
+</script>
+
 <div class="max-w-[1120px] mx-auto vp-doc relative px-[24px] mb-[96px] mt-[32px] md:px-0 md:mb-[64px]">
 <div class="pt-[48px] max-sm:pt-0">
 <div class="max-sm:px-0 flex justify-between z-0 max-md:justify-center">
@@ -13,8 +19,8 @@ outline: false
   <h1 class="font-wordmark font-bold text-[96px] max-sm:text-[80px] leading-none tracking-[-0.04em] text-black dark:text-white">tviem</h1>
   <div class="font-regular text-[21px] max-sm:text-[18px] text-[#919193] max-md:text-center">Build reliable apps &amp; libraries with <span class="text-black dark:text-white">lightweight</span>, <span class="text-black dark:text-white">composable</span>, and <span class="text-black dark:text-white">type-safe</span> modules that interface with TRON</div>
   <div class="flex justify-center space-x-2 flex-nowrap">
-    <a class="landing-btn landing-btn--accent" href="/docs/getting-started">Get started</a>
-    <a class="landing-btn" href="/docs/introduction">Why tviem?</a>
+    <a class="landing-btn landing-btn--accent" :href="withBase('/docs/getting-started')">Get started</a>
+    <a class="landing-btn" :href="withBase('/docs/introduction')">Why tviem?</a>
     <a class="landing-btn" href="https://github.com/tronweb3/tviem">GitHub</a>
   </div>
 </div>
@@ -69,7 +75,7 @@ outline: false
     <div class="relative z-10 flex h-full min-h-[168px] flex-col px-5 py-6 max-lg:min-h-[142px]">
       <div class="text-xl font-medium text-black dark:text-white">Typed APIs</div>
       <div class="mt-3 text-[17px] leading-snug text-[#919193]">Contract calls inferred from the ABI — arguments and return values</div>
-      <a href="/docs/guides/typescript" class="mt-auto pt-3 text-[17px]">See more</a>
+      <a :href="withBase('/docs/guides/typescript')" class="mt-auto pt-3 text-[17px]">See more</a>
     </div>
   </div>
   <div class="relative overflow-hidden rounded-lg border border-solid border-black/10 dark:border-white/10">
@@ -77,7 +83,7 @@ outline: false
     <div class="relative z-10 flex h-full min-h-[168px] flex-col px-5 py-6 max-lg:min-h-[142px]">
       <div class="text-xl font-medium text-black dark:text-white">Build or Send</div>
       <div class="mt-3 text-[17px] leading-snug text-[#919193]">Every write action has a build* twin that stops before broadcast</div>
-      <a href="/docs/guides/build-vs-send" class="mt-auto pt-3 text-[17px]">See more</a>
+      <a :href="withBase('/docs/guides/build-vs-send')" class="mt-auto pt-3 text-[17px]">See more</a>
     </div>
   </div>
   <div class="relative overflow-hidden rounded-lg border border-solid border-black/10 dark:border-white/10">
