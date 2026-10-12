@@ -83,19 +83,10 @@ export default defineConfig({
     nav: [
       { text: 'Docs', link: '/docs/getting-started', activeMatch: '/docs' },
       { text: 'Actions', link: '/docs/actions/public/introduction' },
-      {
-        text: 'v1.0.0-beta.1',
-        items: [
-          {
-            text: 'Changelog',
-            link: 'https://github.com/tronweb3/tviem/blob/main/CHANGELOG.md',
-          },
-          {
-            text: 'Contributing',
-            link: 'https://github.com/tronweb3/tviem/blob/main/.github/CONTRIBUTING.md',
-          },
-        ],
-      },
+      // Plain version label. VitePress has no text-only nav item, but an
+      // item with an empty link renders as a <span> instead of an <a>
+      // (VPLink picks the tag from `href`); custom.css strips its hover.
+      { text: 'v1.0.0-beta.1', link: '' },
     ],
     sidebar: {
       '/docs/': [

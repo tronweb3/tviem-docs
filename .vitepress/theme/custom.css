@@ -46,6 +46,19 @@
   line-height: 1;
 }
 
+/* Navbar version label: the nav item has an empty link (see config.ts), so
+   it is the one menu entry rendered as a <span>. Keep it from looking
+   interactive on hover, in both the desktop bar and the mobile screen. */
+.VPNavBarMenu span.VPNavBarMenuLink,
+.VPNavScreenMenu span.VPNavScreenMenuLink {
+  color: var(--vp-c-text-2);
+  cursor: default;
+}
+.VPNavBarMenu span.VPNavBarMenuLink:hover,
+.VPNavScreenMenu span.VPNavScreenMenuLink:hover {
+  color: var(--vp-c-text-2);
+}
+
 /* ---- Landing page (pageClass: landing) ---------------------------------- */
 
 .landing .vp-doc h2,

@@ -21,7 +21,7 @@ import { withBase } from 'vitepress'
   <div class="flex justify-center space-x-2 flex-nowrap">
     <a class="landing-btn landing-btn--accent" :href="withBase('/docs/getting-started')">Get started</a>
     <a class="landing-btn" :href="withBase('/docs/introduction')">Why tviem?</a>
-    <a class="landing-btn" href="https://github.com/tronweb3/tviem">GitHub</a>
+    <a class="landing-btn" href="https://github.com/tronweb3/tviem" target="_blank" rel="noreferrer">GitHub</a>
   </div>
 </div>
 <div class="flex flex-col justify-between w-[440px] space-y-10 max-lg:w-[300px] max-md:hidden">
