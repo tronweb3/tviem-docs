@@ -7,6 +7,21 @@ import { defineConfig } from 'vitepress'
 // proxies that prefix to the GitHub Pages origin, tronweb3.github.io/tviem-docs/,
 // so the browser only ever sees /tviem/ and every route and asset lives there.
 const base = '/tviem/'
+const parentSite = 'https://walletadapter.org/'
+
+// Opened directly, the Pages origin serves the same HTML, but its /tviem/
+// assets do not exist there, so the page would load blank. Send those
+// visitors to the same page on the public URL instead. Behind the proxy the
+// browser is on walletadapter.org, so this never fires there.
+const redirectFromPagesOrigin = `
+if (location.hostname === 'tronweb3.github.io') {
+  location.replace(
+    'https://walletadapter.org${base}' +
+      location.pathname.replace(/^\\/tviem-docs\\/?/, '') +
+      location.search +
+      location.hash,
+  )
+}`
 
 export default defineConfig({
   title: 'tviem',
@@ -19,22 +34,15 @@ export default defineConfig({
   // rewrite support from the host (automatic on GitHub Pages / Netlify).
   cleanUrls: true,
   head: [
+    ['script', {}, redirectFromPagesOrigin],
     // `head` hrefs are emitted verbatim — VitePress does not prefix them with
     // `base` — so the favicons carry it explicitly.
     [
       'link',
       {
         rel: 'icon',
-        href: `${base}favicons/light.svg`,
-        media: '(prefers-color-scheme: light)',
-      },
-    ],
-    [
-      'link',
-      {
-        rel: 'icon',
-        href: `${base}favicons/dark.svg`,
-        media: '(prefers-color-scheme: dark)',
+        type: 'image/x-icon',
+        href: `${base}favicons/favicon.ico`,
       },
     ],
   ],
@@ -87,6 +95,7 @@ export default defineConfig({
       // item with an empty link renders as a <span> instead of an <a>
       // (VPLink picks the tag from `href`); custom.css strips its hover.
       { text: 'v1.0.0-beta.1', link: '' },
+      { text: 'TronWallet Adapter', link: parentSite, target: '_self' },
     ],
     sidebar: {
       '/docs/': [
