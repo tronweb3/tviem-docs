@@ -7,7 +7,6 @@ import { defineConfig } from 'vitepress'
 // proxies that prefix to the GitHub Pages origin, tronweb3.github.io/tviem-docs/,
 // so the browser only ever sees /tviem/ and every route and asset lives there.
 const base = '/tviem/'
-const parentSite = 'https://walletadapter.org/'
 
 // Opened directly, the Pages origin serves the same HTML, but its /tviem/
 // assets do not exist there, so the page would load blank. Send those
@@ -100,7 +99,6 @@ export default defineConfig({
       // item with an empty link renders as a <span> instead of an <a>
       // (VPLink picks the tag from `href`); custom.css strips its hover.
       { text: 'v1.0.0-beta.1', link: '' },
-      { text: 'TronWallet Adapter', link: parentSite, target: '_self' },
     ],
     sidebar: {
       '/docs/': [

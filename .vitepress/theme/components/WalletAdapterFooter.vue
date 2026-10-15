@@ -14,7 +14,7 @@ const { hasSidebar } = useSidebar()
 <template>
   <footer class="WalletAdapterFooter" :class="{ 'has-sidebar': hasSidebar }">
     <div class="container">
-      <!-- Same tab, like the navbar's "TronWallet Adapter" item (config.ts). -->
+      <!-- Same tab: this is the way back up to the parent site. -->
       <a class="link" href="https://walletadapter.org/">
         <img class="logo" :src="logo" alt="" width="16" height="16" />
         <span>TronWallet Adapter</span>
