@@ -9,3 +9,11 @@ allowBuilds:
   esbuild: true
   es5-ext: false
   vue-demi: false
+
+# vitepress 1.6 still resolves vite 5, which is end-of-life and carries several
+# dev-server advisories that are fixed in 6.4.4. vite 7+ is out of reach because
+# @vitejs/plugin-vue 5.2 (vitepress's own) only accepts vite 5 or 6, so force
+# the last 6.x here until vitepress 2 (vite 8) is stable. Pulls in esbuild 0.25
+# as well, which closes its advisory.
+overrides:
+  vite: 6.4.4
