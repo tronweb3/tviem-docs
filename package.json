@@ -1,5 +1,6 @@
 {
   "name": "tviem-docs",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Documentation site for @tronweb3/tviem",
