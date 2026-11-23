@@ -10,10 +10,8 @@ allowBuilds:
   es5-ext: false
   vue-demi: false
 
-# vitepress 1.6 still resolves vite 5, which is end-of-life and carries several
-# dev-server advisories that are fixed in 6.4.4. vite 7+ is out of reach because
-# @vitejs/plugin-vue 5.2 (vitepress's own) only accepts vite 5 or 6, so force
-# the last 6.x here until vitepress 2 (vite 8) is stable. Pulls in esbuild 0.25
-# as well, which closes its advisory.
+# VitePress 1.6 still resolves Vite 5, and its Vue plugin only supports Vite 5
+# and 6. Pin the patched Vite 6 release for GHSA-8g5g-mxqh-grgj and
+# GHSA-p4f5-76q4-ffq7.
 overrides:
-  vite: 6.4.4
+  vite: 6.4.6
