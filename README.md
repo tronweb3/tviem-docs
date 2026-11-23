@@ -7,6 +7,9 @@ The site is published at https://walletadapter.org/tviem/.
 
 ## Local development
 
+Use the Node.js version pinned in `.nvmrc`. With nvm, run `nvm install` to
+install and select it.
+
 ```bash
 pnpm install
 pnpm dev
